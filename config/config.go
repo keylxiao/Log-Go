@@ -1,13 +1,17 @@
 package config
 
 import (
+    "encoding/json"
     "github.com/spf13/viper"
+    "reflect"
     "strconv"
 )
 
 // Init 创建配置文件
 func Init(address, name string)error{
+    // 打开文件
     viper.SetConfigFile(address)
+    // 新建表头
     viper.Set("name",name)
     viper.Set("count",0)
     err := viper.WriteConfig()
@@ -33,15 +37,26 @@ func Read(address string) ([]map[string]string, error){
 }
 
 // Write 写入文件
-func Write(address string, message map[string]string)error{
+func Write(address string, message interface{})error{
+    // 打开文件
     viper.SetConfigFile(address)
     err := viper.ReadInConfig()
     if err != nil{
         return err
     }
+    // 判断传入消息类型
+    var mess interface{}
+    t := reflect.TypeOf(message).Kind()
+    switch t {
+    case reflect.Map:
+        mess = message.(map[string]string)
+    case reflect.Slice:
+        _ = json.Unmarshal(message.([]byte),&mess)
+    }
+    // 更新消息
     count := viper.GetInt("count")
     viper.Set("count",count+1)
-    viper.Set(strconv.Itoa(count+1),message)
+    viper.Set(strconv.Itoa(count+1),mess)
     err = viper.WriteConfig()
     if err != nil{
         return err

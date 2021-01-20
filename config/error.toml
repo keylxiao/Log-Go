@@ -1,37 +1,16 @@
-count = 5
+count = 2
 name = "error"
 
 [1]
-  error = "NetWork Timeout"
-  grade = "A"
-  ip = "127.0.0.1"
-  requetaddress = "/User/Login"
-  time = "2019-3-7"
+  error = "Timeoutaaaaaa"
+  grade = "Caaaa"
+  ip = "127.0.101.1"
+  requetaddress = "/Product"
+  time = "2018-3-7"
 
 [2]
-  error = "Error Address"
-  grade = "B"
-  ip = "192.168.1.101"
-  requetaddress = "/User/Login"
-  time = "2020-4-8"
-
-[3]
-  error = "Can't Analysis"
-  grade = "C"
-  ip = "localhost"
-  requetaddress = "/User"
-  time = "2017-2-17"
-
-[4]
-  error = "Timeout"
-  grade = "S"
-  ip = "127.0.0.1"
-  requetaddress = "/User/Login"
-  time = "2019-3-7"
-
-[5]
-  error = "Timeout"
-  grade = "C"
+  error = "Timeoutaaaaaa"
+  grade = "Caaaa"
   ip = "127.0.101.1"
   requetaddress = "/Product"
   time = "2018-3-7"
